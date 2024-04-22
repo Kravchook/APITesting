@@ -41,14 +41,6 @@ namespace Task10.RestInfrastructure.ApiClients
             return response;
         }
 
-        public virtual RestResponse ExecuteRequest(RestRequest request, HttpStatusCode expectedHttpStatusCode = HttpStatusCode.OK)
-        {
-            var response = restClient.ExecuteAsync(request).Result;
-            Assert.That(response.StatusCode, Is.EqualTo(expectedHttpStatusCode), "StatusCode not as expected");
-
-            return response;
-        }
-
         public RestRequest CreateRestRequest(string resource, Method method)
         {
             var restRequest = new RestRequest(resource, method);
