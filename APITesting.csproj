@@ -25,16 +25,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj" />
+    <Using Include="NUnit.Framework" />
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="NUnit.Framework" />
+    <Folder Include="Settings\" />
   </ItemGroup>
 
   <Target Name="CopyDebugSettings" BeforeTargets="BeforeBuild">
     <Delete Files="AppSettings/appsettings*.json" />
-    <Copy SourceFiles="../Core/AppSettings/appsettings.json" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="../APITesting/Settings/AppSettings/appsettings.json" DestinationFolder="$(OutDir)" />
   </Target>
 
 </Project>

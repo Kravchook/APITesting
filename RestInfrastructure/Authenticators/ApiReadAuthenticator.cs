@@ -1,5 +1,5 @@
 ﻿using APITesting.RestInfrastructure.DataModels;
-using Core.ConfigClasses;
+using APITesting.Settings.ConfigClasses;
 using RestSharp;
 using RestSharp.Authenticators;
 

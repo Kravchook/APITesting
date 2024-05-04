@@ -2,7 +2,7 @@ using APITesting.RestInfrastructure;
 using APITesting.RestInfrastructure.Enums;
 using APITesting.RestInfrastructure.Services;
 
-namespace Task10.Tests
+namespace APITesting.Tests
 {
     public class Tests
     {
