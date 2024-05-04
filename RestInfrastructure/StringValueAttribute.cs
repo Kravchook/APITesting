@@ -1,6 +1,4 @@
-using System;
-
-namespace Task10.RestInfrastructure
+namespace APITesting.RestInfrastructure
 {
     public class StringValueAttribute : Attribute
     {

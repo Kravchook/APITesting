@@ -1,8 +1,9 @@
-﻿using RestSharp;
+﻿using APITesting.RestInfrastructure.DataModels;
+using Core.ConfigClasses;
+using RestSharp;
 using RestSharp.Authenticators;
-using Task10.RestInfrastructure.DataModels;
 
-namespace Task10.RestInfrastructure.Authenticators
+namespace APITesting.RestInfrastructure.Authenticators
 {
     internal class ApiReadAuthenticator : AuthenticatorBase
     {
@@ -12,9 +13,9 @@ namespace Task10.RestInfrastructure.Authenticators
 
         public ApiReadAuthenticator() : base("")
         {
-            _baseUrl = "http://localhost:49000";
-            _clientId = "0oa157tvtugfFXEhU4x7";
-            _clientSecret = "X7eBCXqlFC7x-mjxG5H91IRv_Bqe1oq7ZwXNA8aq";
+            _baseUrl = Configurations.AppSettings.BaseUrl;
+            _clientId = Configurations.AppSettings.ClientId;
+            _clientSecret = Configurations.AppSettings.ClientSecret;
         }
 
         public ApiReadAuthenticator(string baseUrl, string clientId, string clientSecret) : base("")

@@ -1,4 +1,4 @@
-namespace Task10.RestInfrastructure
+namespace APITesting.RestInfrastructure
 {
     public static class EnumExtensions
     {
