@@ -1,8 +1,8 @@
-using APITesting.RestInfrastructure;
-using APITesting.RestInfrastructure.Enums;
-using APITesting.RestInfrastructure.Services;
+using APITask10.RestInfrastructure;
+using APITask10.RestInfrastructure.Enums;
+using APITask10.RestInfrastructure.Services;
 
-namespace APITesting.Tests
+namespace APITask10.Tests
 {
     public class UserControllerTests
     {

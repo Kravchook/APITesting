@@ -1,4 +1,4 @@
-﻿namespace Task10.RestInfrastructure.Enums
+﻿namespace APITask10.RestInfrastructure.Enums
 {
     public enum Sex
     {

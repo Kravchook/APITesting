@@ -1,6 +1,6 @@
 using System;
 
-namespace Task10.RestInfrastructure
+namespace APITask10.RestInfrastructure
 {
     public class StringValueAttribute : Attribute
     {
@@ -9,5 +9,5 @@ namespace Task10.RestInfrastructure
             Value = value;
         }
         public string Value { get; private set; }
-    }   
+    }
 }

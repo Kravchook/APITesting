@@ -1,4 +1,4 @@
-namespace Task10.RestInfrastructure
+namespace APITask10.RestInfrastructure
 {
     public static class EnumExtensions
     {
@@ -6,7 +6,7 @@ namespace Task10.RestInfrastructure
         {
             return GetStringValue(value);
         }
-        
+
         private static string GetStringValue(Enum value)
         {
             //Current value
@@ -22,12 +22,12 @@ namespace Task10.RestInfrastructure
             if (field.GetCustomAttributes(typeof(StringValueAttribute), false) is StringValueAttribute[] attrs && attrs.Length > 0)
             {
                 //return value of the attribute.
-                output = (attrs[0]).Value;
+                output = attrs[0].Value;
             }
 
             return output;
         }
-        
+
         public static T GetEnumValueByStringValue<T>(this string value) where T : struct
         {
             try
@@ -46,7 +46,7 @@ namespace Task10.RestInfrastructure
 
         public static T GetEnumValueByName<T>(this string name) where T : struct
         {
-            var isParsed = Enum.TryParse<T>(name, out T result);
+            var isParsed = Enum.TryParse(name, out T result);
 
             if (isParsed)
             {
@@ -55,5 +55,5 @@ namespace Task10.RestInfrastructure
 
             throw new InvalidOperationException($"{typeof(T).Name} enum does not contain {name} element");
         }
-    }   
+    }
 }

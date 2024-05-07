@@ -1,12 +1,12 @@
-﻿using APITesting.RestInfrastructure.Services;
-using System.Net;
+﻿using System.Net;
+using APITask10.RestInfrastructure.Services;
 
-namespace APITesting.Tests
+namespace APITask10.Tests
 {
     public class ZipCodeControllerTests
     {
         public ZipCodeService ZipCodeService = new ZipCodeService();
-        
+
         [Test]
         public void GetZipCodes()
         {

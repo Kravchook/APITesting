@@ -1,8 +1,8 @@
 ﻿using RestSharp;
 using System.Net;
-using Task10.RestInfrastructure.Authenticators;
+using APITask10.RestInfrastructure.Authenticators;
 
-namespace Task10.RestInfrastructure.ApiClients
+namespace APITask10.RestInfrastructure.ApiClients
 {
     public class ApiReadRestClient
     {

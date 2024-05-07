@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Task10.RestInfrastructure.DataModels
+namespace APITask10.RestInfrastructure.DataModels
 {
     record TokenResponse
     {

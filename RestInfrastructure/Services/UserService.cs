@@ -1,8 +1,8 @@
-﻿using RestSharp;
-using Task10.RestInfrastructure.ApiClients;
-using Task10.RestInfrastructure.DataModels;
+﻿using APITask10.RestInfrastructure.ApiClients;
+using APITask10.RestInfrastructure.DataModels;
+using RestSharp;
 
-namespace Task10.RestInfrastructure.Services
+namespace APITask10.RestInfrastructure.Services
 {
     public class UserService
     {
@@ -24,7 +24,7 @@ namespace Task10.RestInfrastructure.Services
             {
                 request.AddQueryParameter("yongerThan", yongerThan);
             }
-            
+
             var response = _apiReadRestClientInstance.ExecuteRequest<List<UserDto>>(request);
 
             return response.Data;

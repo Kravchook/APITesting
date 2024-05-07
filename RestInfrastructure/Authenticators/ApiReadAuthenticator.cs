@@ -1,8 +1,8 @@
-﻿using RestSharp;
+﻿using APITask10.RestInfrastructure.DataModels;
+using RestSharp;
 using RestSharp.Authenticators;
-using Task10.RestInfrastructure.DataModels;
 
-namespace Task10.RestInfrastructure.Authenticators
+namespace APITask10.RestInfrastructure.Authenticators
 {
     internal class ApiReadAuthenticator : AuthenticatorBase
     {
@@ -44,7 +44,7 @@ namespace Task10.RestInfrastructure.Authenticators
             request.AddParameter("grant_type", "client_credentials");
             request.AddParameter("scope", "read");
             var response = await client.PostAsync<TokenResponse>(request);
-            
+
             return $" {response!.TokenType} {response.AccessToken} ";
         }
     }
