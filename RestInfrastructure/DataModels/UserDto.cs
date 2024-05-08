@@ -1,6 +1,6 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
-namespace APITask10.RestInfrastructure.DataModels
+namespace APITesting.RestInfrastructure.DataModels
 {
     public record UserDto
     {

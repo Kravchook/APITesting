@@ -1,8 +1,8 @@
-﻿using APITask10.RestInfrastructure.ApiClients;
-using APITask10.RestInfrastructure.DataModels;
+using APITesting.RestInfrastructure.ApiClients;
+using APITesting.RestInfrastructure.DataModels;
 using RestSharp;
 
-namespace APITask10.RestInfrastructure.Services
+namespace APITesting.RestInfrastructure.Services
 {
     public class UserService
     {

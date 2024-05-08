@@ -1,8 +1,9 @@
-﻿using APITask10.RestInfrastructure.DataModels;
+using APITesting.RestInfrastructure.DataModels;
+using APITesting.Settings.ConfigClasses;
 using RestSharp;
 using RestSharp.Authenticators;
 
-namespace APITask10.RestInfrastructure.Authenticators
+namespace APITesting.RestInfrastructure.Authenticators
 {
     internal class ApiWriteAuthenticator : AuthenticatorBase
     {
@@ -12,9 +13,9 @@ namespace APITask10.RestInfrastructure.Authenticators
 
         public ApiWriteAuthenticator() : base("")
         {
-            _baseUrl = "http://localhost:49000";
-            _clientId = "0oa157tvtugfFXEhU4x7";
-            _clientSecret = "X7eBCXqlFC7x-mjxG5H91IRv_Bqe1oq7ZwXNA8aq";
+            _baseUrl = Configurations.AppSettings.BaseUrl;
+            _clientId = Configurations.AppSettings.ClientId;
+            _clientSecret = Configurations.AppSettings.ClientSecret;
         }
 
         public ApiWriteAuthenticator(string baseUrl, string clientId, string clientSecret) : base("")
