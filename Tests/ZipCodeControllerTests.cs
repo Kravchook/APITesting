@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using APITask10.RestInfrastructure.Services;
+using APITesting.RestInfrastructure.Services;
 
 namespace APITask10.Tests
 {

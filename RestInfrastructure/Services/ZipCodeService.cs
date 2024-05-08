@@ -1,8 +1,8 @@
 ﻿using System.Net;
-using APITask10.RestInfrastructure.ApiClients;
+using APITesting.RestInfrastructure.ApiClients;
 using RestSharp;
 
-namespace APITask10.RestInfrastructure.Services
+namespace APITesting.RestInfrastructure.Services
 {
     public class ZipCodeService
     {
