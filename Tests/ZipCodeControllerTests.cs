@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using APITesting.RestInfrastructure.Services;
 
-namespace APITask10.Tests
+namespace APITesting.Tests
 {
     public class ZipCodeControllerTests
     {
