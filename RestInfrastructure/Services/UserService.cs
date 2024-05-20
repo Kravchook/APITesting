@@ -1,4 +1,4 @@
-﻿using APITesting.RestInfrastructure.ApiClients;
+using APITesting.RestInfrastructure.ApiClients;
 using APITesting.RestInfrastructure.DataModels;
 using RestSharp;
 
@@ -24,7 +24,7 @@ namespace APITesting.RestInfrastructure.Services
             {
                 request.AddQueryParameter("yongerThan", yongerThan);
             }
-            
+
             var response = _apiReadRestClientInstance.ExecuteRequest<List<UserDto>>(request);
 
             return response.Data;

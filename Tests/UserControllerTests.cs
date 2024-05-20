@@ -4,17 +4,14 @@ using APITesting.RestInfrastructure.Services;
 
 namespace APITesting.Tests
 {
-    public class Tests
+    public class UserControllerTests
     {
         private UserService UserService = new UserService();
 
         [Test]
-        public void Test1()
+        public void GetUsers()
         {
             var users = UserService.GetUsers(Sex.Female.StringValue());
-
-
-
         }
     }
 }

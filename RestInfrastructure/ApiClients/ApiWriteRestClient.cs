@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using APITesting.RestInfrastructure.Authenticators;
 using RestSharp;
 

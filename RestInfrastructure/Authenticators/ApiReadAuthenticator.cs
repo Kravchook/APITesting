@@ -1,4 +1,4 @@
-﻿using APITesting.RestInfrastructure.DataModels;
+using APITesting.RestInfrastructure.DataModels;
 using APITesting.Settings.ConfigClasses;
 using RestSharp;
 using RestSharp.Authenticators;
@@ -45,7 +45,7 @@ namespace APITesting.RestInfrastructure.Authenticators
             request.AddParameter("grant_type", "client_credentials");
             request.AddParameter("scope", "read");
             var response = await client.PostAsync<TokenResponse>(request);
-            
+
             return $" {response!.TokenType} {response.AccessToken} ";
         }
     }
