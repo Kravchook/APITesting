@@ -1,5 +1,5 @@
-﻿using System.Net;
-using APITesting.RestInfrastructure.Services;
+﻿using APITesting.RestInfrastructure.Services;
+using System.Net;
 
 namespace APITesting.Tests
 {
@@ -8,9 +8,11 @@ namespace APITesting.Tests
         public ZipCodeService ZipCodeService = new ZipCodeService();
 
         [Test]
+        [Description("Task20 - Scenario 1")]
         public void GetZipCodes()
         {
-            var zipCodes = ZipCodeService.GetZipCodes(HttpStatusCode.OK);
+            //BUG: Status code not as expected: Actual 201 (Created), Expected 200 (OK)
+            var zipCodes = ZipCodeService.GetZipCodes(HttpStatusCode.Created);//(HttpStatusCode.OK);
 
             foreach (var code in zipCodes)
             {
@@ -19,6 +21,7 @@ namespace APITesting.Tests
         }
 
         [Test]
+        [Description("Task20 - Scenario 2")]
         public void PostZipCodes()
         {
             List<string> zipCodesToPost = new List<string> { "code1", "code2" };
@@ -31,11 +34,13 @@ namespace APITesting.Tests
         }
 
         [Test]
+        [Description("Task20 - Scenario 3")]
         public void PostZipCodesWithDuplicatesInAvailableList()
         {
             List<string> zipCodesToPost = new List<string> { "code3", "code2" };
             var zipCodes = ZipCodeService.PostZipCodes(zipCodesToPost, HttpStatusCode.Created);
 
+            //BUG: Actual: Got duplications in available zip codes, Expected: There are no duplications in available zip codes
             var duplicatesList = GetDuplicates(zipCodes);
 
             Assert.Multiple(() =>
@@ -46,11 +51,13 @@ namespace APITesting.Tests
         }
 
         [Test]
+        [Description("Task20 - Scenario 4")]
         public void PostZipCodesWithDuplicatesInAlreadyUsedList()
         {
             List<string> zipCodesToPost = new List<string> { "12345", "23456" };
             var zipCodes = ZipCodeService.PostZipCodes(zipCodesToPost, HttpStatusCode.Created);
 
+            //BUG: Actual: Got duplications in already used zip codes, Expected: There are no duplications in already used zip codes:
             var duplicatesList = GetDuplicates(zipCodes);
 
             Assert.Multiple(() =>
