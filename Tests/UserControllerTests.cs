@@ -25,7 +25,7 @@ namespace APITesting.Tests
         }
 
         [Test]
-        [Description("Scenario 1")]
+        [Description("Task30 - Scenario 1")]
         public void CreateUser_AllFieldsFilled()
         {
             UserDto user = new UserDto
@@ -59,7 +59,7 @@ namespace APITesting.Tests
         }
 
         [Test]
-        [Description("Scenario 2")]
+        [Description("Task30 - Scenario 2")]
         public void CreateUser_RequiredFieldsFilled()
         {
             UserDto user = new UserDto
@@ -75,7 +75,7 @@ namespace APITesting.Tests
         }
 
         [Test]
-        [Description("Scenario 3")]
+        [Description("Task30 - Scenario 3")]
         public void CreateUser_AllFieldsFilled_IncorrectZipCode()
         {
             UserDto user = new UserDto
@@ -93,7 +93,7 @@ namespace APITesting.Tests
         }
 
         [Test]
-        [Description("Scenario 4")]
+        [Description("Task30 - Scenario 4")]
         public void CreateUser_CreateDuplicateForUser()
         {
             UserDto user = new UserDto

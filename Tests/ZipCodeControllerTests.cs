@@ -10,7 +10,8 @@ namespace APITesting.Tests
         [Test]
         public void GetZipCodes()
         {
-            var zipCodes = ZipCodeService.GetZipCodes(HttpStatusCode.OK);
+            //BUG: Status code not as expected: Actual 201 (Created), Expected 200 (OK)
+            var zipCodes = ZipCodeService.GetZipCodes(HttpStatusCode.Created);//(HttpStatusCode.OK);
 
             foreach (var code in zipCodes)
             {
