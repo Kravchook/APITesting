@@ -13,7 +13,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Debug")]
-        public void ShowUsers()
+        public void ShowUsersTest()
         {
             var users = UserService.GetUsers();
 
@@ -26,7 +26,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task30 - Scenario 1")]
-        public void CreateUser_AllFieldsFilled()
+        public void CreateUser_AllFieldsFilledTest()
         {
             UserDto user = new UserDto
             {
@@ -60,7 +60,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task30 - Scenario 2")]
-        public void CreateUser_RequiredFieldsFilled()
+        public void CreateUser_RequiredFieldsFilledTest()
         {
             UserDto user = new UserDto
             {
@@ -76,7 +76,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task30 - Scenario 3")]
-        public void CreateUser_AllFieldsFilled_IncorrectZipCode()
+        public void CreateUser_AllFieldsFilled_IncorrectZipCodeTest()
         {
             UserDto user = new UserDto
             {
@@ -94,7 +94,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task30 - Scenario 4")]
-        public void CreateUser_CreateDuplicateForUser()
+        public void CreateUser_CreateDuplicateForUserTest()
         {
             UserDto user = new UserDto
             {

@@ -9,7 +9,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task20 - Scenario 1")]
-        public void GetZipCodes()
+        public void GetZipCodesTest()
         {
             //BUG: Status code not as expected: Actual 201 (Created), Expected 200 (OK)
             var zipCodes = ZipCodeService.GetZipCodes(HttpStatusCode.Created);//(HttpStatusCode.OK);
@@ -22,7 +22,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task20 - Scenario 2")]
-        public void PostZipCodes()
+        public void PostZipCodesTest()
         {
             List<string> zipCodesToPost = new List<string> { "code1", "code2" };
             var zipCodes = ZipCodeService.PostZipCodes(zipCodesToPost, HttpStatusCode.Created);
@@ -35,7 +35,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task20 - Scenario 3")]
-        public void PostZipCodesWithDuplicatesInAvailableList()
+        public void PostZipCodesWithDuplicatesInAvailableListTest()
         {
             List<string> zipCodesToPost = new List<string> { "code3", "code2" };
             var zipCodes = ZipCodeService.PostZipCodes(zipCodesToPost, HttpStatusCode.Created);
@@ -52,7 +52,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task20 - Scenario 4")]
-        public void PostZipCodesWithDuplicatesInAlreadyUsedList()
+        public void PostZipCodesWithDuplicatesInAlreadyUsedListTest()
         {
             List<string> zipCodesToPost = new List<string> { "12345", "23456" };
             var zipCodes = ZipCodeService.PostZipCodes(zipCodesToPost, HttpStatusCode.Created);
