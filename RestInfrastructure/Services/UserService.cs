@@ -1,6 +1,7 @@
 using APITesting.RestInfrastructure.ApiClients;
 using APITesting.RestInfrastructure.DataModels;
 using RestSharp;
+using System.Net;
 
 namespace APITesting.RestInfrastructure.Services
 {
@@ -26,6 +27,16 @@ namespace APITesting.RestInfrastructure.Services
             }
 
             var response = _apiReadRestClientInstance.ExecuteRequest<List<UserDto>>(request);
+
+            return response.Data;
+        }
+
+        public List<string> CreateUser(UserDto user, HttpStatusCode expectedHttpStatusCode)
+        {
+            var request = _apiWriteRestClientInstance.CreateRestRequest("http://localhost:49000/users", Method.Post);
+            request.AddJsonBody(user);
+
+            var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
 
             return response.Data;
         }
