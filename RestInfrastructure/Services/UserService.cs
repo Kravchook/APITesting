@@ -10,7 +10,7 @@ namespace APITesting.RestInfrastructure.Services
         readonly ApiReadRestClient _apiReadRestClientInstance = ApiReadRestClient.Instance();
         readonly ApiWriteRestClient _apiWriteRestClientInstance = ApiWriteRestClient.Instance();
 
-        public List<UserDto> GetUsers(string sex = "", int olderThan = 0, int yongerThan = 0)
+        public List<UserDto> GetUsers(string sex = "", int olderThan = 0, int youngerThan = 0)
         {
             var request = _apiReadRestClientInstance.CreateRestRequest("http://localhost:49000/users", Method.Get);
             if (sex != string.Empty)
@@ -21,9 +21,9 @@ namespace APITesting.RestInfrastructure.Services
             {
                 request.AddQueryParameter("olderThan", olderThan);
             }
-            if (yongerThan != 0)
+            if (youngerThan != 0)
             {
-                request.AddQueryParameter("yongerThan", yongerThan);
+                request.AddQueryParameter("youngerThan", youngerThan);
             }
 
             var response = _apiReadRestClientInstance.ExecuteRequest<List<UserDto>>(request);
