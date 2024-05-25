@@ -362,6 +362,100 @@ namespace APITesting.Tests
             }
         }
 
+        [Test]
+        [Description("Task60 - Scenario 1")]
+        public void DeleteUser_AllFieldsFilledTest()
+        {
+            UserDto userToDelete = new UserDto
+            {
+                Age = 20,
+                Name = "Bob Dilan",
+                Sex = Sex.Male.StringValue(),
+                ZipCode = "12345"
+            };
+            
+            try
+            {
+                UserService.DeleteUser(userToDelete, HttpStatusCode.NoContent);
+            }
+            finally
+            {
+                var users = GetUsers();
+                Assert.That(users.Find(u =>
+                    u.Name.Equals(userToDelete.Name) && u.Sex.Equals(userToDelete.Sex) && u.Age.Equals(userToDelete.Age)
+                    && u.ZipCode.Equals(userToDelete.ZipCode)), Is.Null, $"User {userToDelete.Name} was not deleted");
+
+                //BUG: Zip code is NOT returned to the list of available zip codes 
+                var zipCodes = ZipCodeService.GetZipCodes(HttpStatusCode.Created);
+                Assert.That(zipCodes, Contains.Item(userToDelete.ZipCode), 
+                    $"Zip code {userToDelete.ZipCode} was not added to the available zip codes list");
+
+                Console.WriteLine("Available Zip codes:");
+                foreach (var code in zipCodes)
+                {
+                    Console.WriteLine(code);
+                }
+            }
+        }
+
+        [Test]
+        [Description("Task60 - Scenario 2")]
+        public void DeleteUser_OnlyRequiredFieldsFilledTest()
+        {
+            UserDto userToDelete = new UserDto
+            {
+                Name = "Bob Dilan",
+                Sex = Sex.Male.StringValue()
+                //Name = "Janna Dark",
+                //Sex = Sex.Female.StringValue()
+            };
+
+            try
+            {
+                UserService.DeleteUser(userToDelete, HttpStatusCode.NoContent);
+            }
+            finally
+            {
+                var users = GetUsers();
+                Assert.That(users.Find(u => u.Name.Equals(userToDelete.Name) && u.Sex.Equals(userToDelete.Sex)),
+                    Is.Null, $"User {userToDelete.Name} was not deleted");
+
+                //BUG: In case if existing user has a Zip code specified - that user is NOT being deleted and zip code is not returned to the list
+                //of available zip codes 
+                //NOTE: In case if existing user does not have a Zip code specified - OK, that user is being deleted
+                var zipCodes = ZipCodeService.GetZipCodes(HttpStatusCode.Created);
+                Assert.That(zipCodes, Contains.Item(userToDelete.ZipCode),
+                    $"Zip code {userToDelete.ZipCode} was not added to the available zip codes list");
+
+                Console.WriteLine("Available Zip codes:");
+                foreach (var code in zipCodes)
+                {
+                    Console.WriteLine(code);
+                }
+            }
+        }
+
+        [Test]
+        [Description("Task60 - Scenario 3")]
+        public void DeleteUser_AnyOfRequiredFieldsIsMissingTest()
+        {
+            UserDto userToDelete = new UserDto
+            {
+                Name = "Bob Dilan"
+            };
+
+            try
+            {
+                UserService.DeleteUser(userToDelete, HttpStatusCode.Conflict);
+            }
+            finally
+            {
+                var users = GetUsers();
+                Assert.That(users.Find(u => u.Name.Equals(userToDelete.Name)),
+                    Is.Not.Null, $"User {userToDelete.Name} was deleted");
+            }
+        }
+
         private List<UserDto> GetUsers(string sex = "", int olderThan = 0, int youngerThan = 0)
         {
             var users = UserService.GetUsers(sex, olderThan, youngerThan);
