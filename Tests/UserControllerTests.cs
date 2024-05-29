@@ -12,10 +12,49 @@ namespace APITesting.Tests
         private ZipCodeService ZipCodeService = new ZipCodeService();
 
         [Test]
-        [Description("Debug")]
+        [Description("Task40 - Scenario 1")]
         public void ShowUsersTest()
         {
             var users = UserService.GetUsers();
+
+            Console.WriteLine("Created users:");
+            foreach (var user in users)
+            {
+                Console.WriteLine(user.Name);
+            }
+        }
+
+        [Test]
+        [Description("Task40 - Scenario 2")]
+        public void ShowUsersOlderThanTest()
+        {
+            var users = UserService.GetUsers(olderThan: 19);
+
+            Console.WriteLine("Created users:");
+            foreach (var user in users)
+            {
+                Console.WriteLine(user.Name);
+            }
+        }
+
+        [Test]
+        [Description("Task40 - Scenario 3")]
+        public void ShowUsersYoungerThanTest()
+        {
+            var users = UserService.GetUsers(youngerThan: 19);
+
+            Console.WriteLine("Created users:");
+            foreach (var user in users)
+            {
+                Console.WriteLine(user.Name);
+            }
+        }
+
+        [Test]
+        [Description("Task40 - Scenario 4")]
+        public void ShowUsersOfSpecificGenderTest()
+        {
+            var users = UserService.GetUsers(sex: Sex.Female.StringValue());
 
             Console.WriteLine("Created users:");
             foreach (var user in users)
@@ -80,7 +119,7 @@ namespace APITesting.Tests
         {
             UserDto user = new UserDto
             {
-                Age = 20,
+                Age = 52,
                 Name = "Tom Jones",
                 Sex = Sex.Male.StringValue(),
                 ZipCode = "code10"
