@@ -456,6 +456,75 @@ namespace APITesting.Tests
             }
         }
 
+        [Test]
+        [Description("Task70 - Scenario 1")]
+        public void UploadUsers_FileContainsUsers()
+        {
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
+
+            var users = GetUsers();
+            var userNames = users.Select(u => u.Name);
+
+            try
+            {
+                //BUG: If run the test for the second time it should fail as specified zip codes become unavailable (this case actually comes from scenario 2)
+                UserService.UploadUsers(path, HttpStatusCode.Created);
+            }
+            finally
+            {
+                var newUsers = GetUsers();
+                var newUserNames = newUsers.Select(u => u.Name);
+
+                Assert.That(newUserNames, Is.Not.EquivalentTo(userNames), $"Users are not replaced with users from file");
+            }
+        }
+
+        [Test]
+        [Description("Task70 - Scenario 2")]
+        public void UploadUsers_UserHasIncorrectZipCode()
+        {
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
+
+            var users = GetUsers();
+            var userNames = users.Select(u => u.Name);
+
+            try
+            {
+                UserService.UploadUsers(path, HttpStatusCode.FailedDependency);
+            }
+            finally
+            {
+                var newUsers = GetUsers();
+                var newUserNames = newUsers.Select(u => u.Name);
+
+                //BUG: Users with incorrect (unavailable) zip code can be uploaded from file and replace existing users
+                Assert.That(newUserNames, Is.EquivalentTo(userNames), $"New users are uploaded from file");
+            }
+        }
+
+        [Test]
+        [Description("Task70 - Scenario 3")]
+        public void UploadUsers_UserHasMissedRequiredField()
+        {
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
+
+            var users = GetUsers();
+            var userNames = users.Select(u => u.Name);
+
+            try
+            {
+                //BUG: Got 400 response code (Bad Request) in case if any of required fields are missing in the file
+                UserService.UploadUsers(path, HttpStatusCode.Conflict);
+            }
+            finally
+            {
+                var newUsers = GetUsers();
+                var newUserNames = newUsers.Select(u => u.Name);
+
+                Assert.That(newUserNames, Is.EquivalentTo(userNames), $"New users are uploaded from file");
+            }
+        }
+
         private List<UserDto> GetUsers(string sex = "", int olderThan = 0, int youngerThan = 0)
         {
             var users = UserService.GetUsers(sex, olderThan, youngerThan);

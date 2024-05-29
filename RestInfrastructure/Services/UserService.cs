@@ -61,5 +61,15 @@ namespace APITesting.RestInfrastructure.Services
 
             return response.Data;
         }
+
+        public List<string> UploadUsers(string path, HttpStatusCode expectedHttpStatusCode)
+        {
+            var request = _apiWriteRestClientInstance.UploadFileRestRequest($"{Configurations.AppSettings.BaseUrl}/users/upload", Method.Post);
+            request.AddFile("file", path);
+
+            var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
+
+            return response.Data;
+        }
     }
 }
