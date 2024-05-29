@@ -50,5 +50,15 @@ namespace APITesting.RestInfrastructure.Services
 
             return response.Data;
         }
+
+        public List<string> DeleteUser(UserDto user, HttpStatusCode expectedHttpStatusCode)
+        {
+            var request = _apiWriteRestClientInstance.CreateRestRequest("http://localhost:49000/users", Method.Delete);
+            request.AddJsonBody(user);
+
+            var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
+
+            return response.Data;
+        }
     }
 }
