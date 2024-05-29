@@ -212,7 +212,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 2")]
-        public void UpdateUser_IncorrectZipCode_MethodPut()
+        public void UpdateUser_IncorrectZipCodeTest_MethodPut()
         {
             UserDto userNewValues = new UserDto
             {
@@ -252,7 +252,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 2")]
-        public void UpdateUser_IncorrectZipCode_MethodPatch()
+        public void UpdateUser_IncorrectZipCodeTest_MethodPatch()
         {
             UserDto userNewValues = new UserDto
             {
@@ -290,7 +290,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 3")]
-        public void UpdateUser_RequiredFieldsAreMissing_MethodPut()
+        public void UpdateUser_RequiredFieldsAreMissingTest_MethodPut()
         {
             UserDto userNewValues = new UserDto
             {
@@ -328,7 +328,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 3")]
-        public void UpdateUser_RequiredFieldsAreMissing_MethodPatch()
+        public void UpdateUser_RequiredFieldsAreMissingTest_MethodPatch()
         {
             UserDto userNewValues = new UserDto
             {
@@ -458,7 +458,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task70 - Scenario 1")]
-        public void UploadUsers_FileContainsUsers()
+        public void UploadUsers_FileContainsUsersTest()
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
 
@@ -481,7 +481,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task70 - Scenario 2")]
-        public void UploadUsers_UserHasIncorrectZipCode()
+        public void UploadUsers_UserHasIncorrectZipCodeTest()
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
 
@@ -504,7 +504,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task70 - Scenario 3")]
-        public void UploadUsers_UserHasMissedRequiredField()
+        public void UploadUsers_UserHasMissedRequiredFieldTest()
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
 
