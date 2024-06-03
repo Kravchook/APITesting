@@ -1,5 +1,6 @@
 using APITesting.RestInfrastructure.ApiClients;
 using APITesting.RestInfrastructure.DataModels;
+using APITesting.Settings.ConfigClasses;
 using RestSharp;
 using System.Net;
 
@@ -12,7 +13,7 @@ namespace APITesting.RestInfrastructure.Services
 
         public List<UserDto> GetUsers(string sex = "", int olderThan = 0, int youngerThan = 0)
         {
-            var request = _apiReadRestClientInstance.CreateRestRequest("http://localhost:49000/users", Method.Get);
+            var request = _apiReadRestClientInstance.CreateRestRequest($"{Configurations.AppSettings.BaseUrl}/users", Method.Get);
             if (sex != string.Empty)
             {
                 request.AddQueryParameter("sex", sex);
@@ -33,7 +34,7 @@ namespace APITesting.RestInfrastructure.Services
 
         public List<string> CreateUser(UserDto user, HttpStatusCode expectedHttpStatusCode)
         {
-            var request = _apiWriteRestClientInstance.CreateRestRequest("http://localhost:49000/users", Method.Post);
+            var request = _apiWriteRestClientInstance.CreateRestRequest($"{Configurations.AppSettings.BaseUrl}/users", Method.Post);
             request.AddJsonBody(user);
 
             var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
@@ -43,7 +44,7 @@ namespace APITesting.RestInfrastructure.Services
 
         public List<string> UpdateUser(UpdateUserDto updateUserDto, Method method, HttpStatusCode expectedHttpStatusCode)
         {
-            var request = _apiWriteRestClientInstance.CreateRestRequest("http://localhost:49000/users", method);
+            var request = _apiWriteRestClientInstance.CreateRestRequest($"{Configurations.AppSettings.BaseUrl}/users", method);
             request.AddJsonBody(updateUserDto);
 
             var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
@@ -53,8 +54,18 @@ namespace APITesting.RestInfrastructure.Services
 
         public List<string> DeleteUser(UserDto user, HttpStatusCode expectedHttpStatusCode)
         {
-            var request = _apiWriteRestClientInstance.CreateRestRequest("http://localhost:49000/users", Method.Delete);
+            var request = _apiWriteRestClientInstance.CreateRestRequest($"{Configurations.AppSettings.BaseUrl}/users", Method.Delete);
             request.AddJsonBody(user);
+
+            var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
+
+            return response.Data;
+        }
+
+        public List<string> UploadUsers(string path, HttpStatusCode expectedHttpStatusCode)
+        {
+            var request = _apiWriteRestClientInstance.UploadFileRestRequest($"{Configurations.AppSettings.BaseUrl}/users/upload", Method.Post);
+            request.AddFile("file", path);
 
             var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
 

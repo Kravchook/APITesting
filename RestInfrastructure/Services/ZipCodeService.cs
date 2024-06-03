@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using APITesting.RestInfrastructure.ApiClients;
+using APITesting.Settings.ConfigClasses;
 using RestSharp;
 
 namespace APITesting.RestInfrastructure.Services
@@ -11,7 +12,7 @@ namespace APITesting.RestInfrastructure.Services
 
         public List<string> GetZipCodes(HttpStatusCode expectedHttpStatusCode)
         {
-            var request = _apiReadRestClientInstance.CreateRestRequest("http://localhost:49000/zip-codes", Method.Get);
+            var request = _apiReadRestClientInstance.CreateRestRequest($"{Configurations.AppSettings.BaseUrl}/zip-codes", Method.Get);
             var response = _apiReadRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);
 
             return response.Data;
@@ -19,7 +20,7 @@ namespace APITesting.RestInfrastructure.Services
 
         public List<string> PostZipCodes(List<string> zipCodes, HttpStatusCode expectedHttpStatusCode)
         {
-            var request = _apiWriteRestClientInstance.CreateRestRequest("http://localhost:49000/zip-codes/expand", Method.Post);
+            var request = _apiWriteRestClientInstance.CreateRestRequest($"{Configurations.AppSettings.BaseUrl}/zip-codes/expand", Method.Post);
             request.AddJsonBody(zipCodes);
             
             var response = _apiWriteRestClientInstance.ExecuteRequest<List<string>>(request, expectedHttpStatusCode);

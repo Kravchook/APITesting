@@ -1,5 +1,6 @@
 using System.Net;
 using APITesting.RestInfrastructure.Authenticators;
+using APITesting.Settings.ConfigClasses;
 using RestSharp;
 
 namespace APITesting.RestInfrastructure.ApiClients
@@ -13,7 +14,7 @@ namespace APITesting.RestInfrastructure.ApiClients
 
         private ApiWriteRestClient()
         {
-            var restOptions = new RestClientOptions("http://localhost:49000/oauth/token")
+            var restOptions = new RestClientOptions($"{Configurations.AppSettings.BaseUrl}/oauth/token")
             {
                 Authenticator = new ApiWriteAuthenticator()
             };
@@ -50,6 +51,13 @@ namespace APITesting.RestInfrastructure.ApiClients
             restRequest.AddHeader("Accept", "*/*");
             restRequest.AddHeader("Accept-Encoding", "gzip, deflate, br");
 
+            return restRequest;
+        }
+
+        public RestRequest UploadFileRestRequest(string resource, Method method)
+        {
+            var restRequest = new RestRequest(resource, method);
+            
             return restRequest;
         }
     }

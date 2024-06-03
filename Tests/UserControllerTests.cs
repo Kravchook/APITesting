@@ -212,7 +212,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 2")]
-        public void UpdateUser_IncorrectZipCode_MethodPut()
+        public void UpdateUser_IncorrectZipCodeTest_MethodPut()
         {
             UserDto userNewValues = new UserDto
             {
@@ -252,7 +252,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 2")]
-        public void UpdateUser_IncorrectZipCode_MethodPatch()
+        public void UpdateUser_IncorrectZipCodeTest_MethodPatch()
         {
             UserDto userNewValues = new UserDto
             {
@@ -290,7 +290,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 3")]
-        public void UpdateUser_RequiredFieldsAreMissing_MethodPut()
+        public void UpdateUser_RequiredFieldsAreMissingTest_MethodPut()
         {
             UserDto userNewValues = new UserDto
             {
@@ -328,7 +328,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 3")]
-        public void UpdateUser_RequiredFieldsAreMissing_MethodPatch()
+        public void UpdateUser_RequiredFieldsAreMissingTest_MethodPatch()
         {
             UserDto userNewValues = new UserDto
             {
@@ -453,6 +453,75 @@ namespace APITesting.Tests
                 var users = GetUsers();
                 Assert.That(users.Find(u => u.Name.Equals(userToDelete.Name)),
                     Is.Not.Null, $"User {userToDelete.Name} was deleted");
+            }
+        }
+
+        [Test]
+        [Description("Task70 - Scenario 1")]
+        public void UploadUsers_FileContainsUsersTest()
+        {
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
+
+            var users = GetUsers();
+            var userNames = users.Select(u => u.Name);
+
+            try
+            {
+                //BUG: If run the test for the second time it should fail as specified zip codes become unavailable (this case actually comes from scenario 2)
+                UserService.UploadUsers(path, HttpStatusCode.Created);
+            }
+            finally
+            {
+                var newUsers = GetUsers();
+                var newUserNames = newUsers.Select(u => u.Name);
+
+                Assert.That(newUserNames, Is.Not.EquivalentTo(userNames), $"Users are not replaced with users from file");
+            }
+        }
+
+        [Test]
+        [Description("Task70 - Scenario 2")]
+        public void UploadUsers_UserHasIncorrectZipCodeTest()
+        {
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
+
+            var users = GetUsers();
+            var userNames = users.Select(u => u.Name);
+
+            try
+            {
+                UserService.UploadUsers(path, HttpStatusCode.FailedDependency);
+            }
+            finally
+            {
+                var newUsers = GetUsers();
+                var newUserNames = newUsers.Select(u => u.Name);
+
+                //BUG: Users with incorrect (unavailable) zip code can be uploaded from file and replace existing users
+                Assert.That(newUserNames, Is.EquivalentTo(userNames), $"New users are uploaded from file");
+            }
+        }
+
+        [Test]
+        [Description("Task70 - Scenario 3")]
+        public void UploadUsers_UserHasMissedRequiredFieldTest()
+        {
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
+
+            var users = GetUsers();
+            var userNames = users.Select(u => u.Name);
+
+            try
+            {
+                //BUG: Got 400 response code (Bad Request) in case if any of required fields are missing in the file
+                UserService.UploadUsers(path, HttpStatusCode.Conflict);
+            }
+            finally
+            {
+                var newUsers = GetUsers();
+                var newUserNames = newUsers.Select(u => u.Name);
+
+                Assert.That(newUserNames, Is.EquivalentTo(userNames), $"New users are uploaded from file");
             }
         }
 
