@@ -1,6 +1,7 @@
 using System.Net;
 using APITesting.RestInfrastructure.Authenticators;
 using APITesting.Settings.ConfigClasses;
+using NLog;
 using RestSharp;
 
 namespace APITesting.RestInfrastructure.ApiClients
@@ -9,6 +10,8 @@ namespace APITesting.RestInfrastructure.ApiClients
     {
         private static ApiReadRestClient instance;
         private static readonly object _locker = new object();
+
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         public RestClient RestClient;
 
@@ -38,6 +41,8 @@ namespace APITesting.RestInfrastructure.ApiClients
         public virtual RestResponse<T> ExecuteRequest<T>(RestRequest request, HttpStatusCode expectedHttpStatusCode = HttpStatusCode.OK) where T : new()
         {
             var response = RestClient.ExecuteAsync<T>(request).Result;
+            logger.Info($"Response content:{response.Content}");
+
             Assert.That(response.StatusCode, Is.EqualTo(expectedHttpStatusCode), "StatusCode not as expected");
 
             return response;

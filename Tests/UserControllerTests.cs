@@ -4,13 +4,21 @@ using APITesting.RestInfrastructure.Enums;
 using APITesting.RestInfrastructure.Services;
 using System.Net;
 using RestSharp;
+using Allure.NUnit.Attributes;
+using Allure.NUnit;
+using NLog;
 
 namespace APITesting.Tests
 {
+    [AllureNUnit]
+    [AllureDisplayIgnored]
+    [AllureSubSuite("User Controller Tests")]
     public class UserControllerTests
     {
         private UserService UserService = new UserService();
         private ZipCodeService ZipCodeService = new ZipCodeService();
+
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         [Test]
         [Description("Task40 - Scenario 1")]
@@ -42,6 +50,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task30 - Scenario 1")]
+        [AllureIssue("A duplicate user is being added to the application in case if user to add has the same name and sex as existing user in the system")]
         public void CreateUser_AllFieldsFilledTest()
         {
             UserDto user = new UserDto
@@ -110,6 +119,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task30 - Scenario 4")]
+        [AllureIssue("If create a duplicate for the user with only required fields filled (Name, Sex) without specifying ZipCode getting error")]
         public void CreateUser_CreateDuplicateForUserTest()
         {
             UserDto user = new UserDto
@@ -212,6 +222,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 2")]
+        [AllureIssue("The userToChange is being deleted from the application in case of incorrect new zip code")]
         public void UpdateUser_IncorrectZipCodeTest_MethodPut()
         {
             UserDto userNewValues = new UserDto
@@ -252,6 +263,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 2")]
+        [AllureIssue("The userToChange is being deleted from the application in case of incorrect new zip code")]
         public void UpdateUser_IncorrectZipCodeTest_MethodPatch()
         {
             UserDto userNewValues = new UserDto
@@ -290,6 +302,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 3")]
+        [AllureIssue("The userToChange is being deleted from the application in case of new required values are missing")]
         public void UpdateUser_RequiredFieldsAreMissingTest_MethodPut()
         {
             UserDto userNewValues = new UserDto
@@ -328,6 +341,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task50 - Scenario 3")]
+        [AllureIssue("The userToChange is being deleted from the application in case of new required values are missing")]
         public void UpdateUser_RequiredFieldsAreMissingTest_MethodPatch()
         {
             UserDto userNewValues = new UserDto
@@ -364,6 +378,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task60 - Scenario 1")]
+        [AllureIssue("Zip code is not returned to the list of available zip codes")]
         public void DeleteUser_AllFieldsFilledTest()
         {
             UserDto userToDelete = new UserDto
@@ -400,14 +415,15 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task60 - Scenario 2")]
+        [AllureIssue("In case if existing user has a Zip code specified - that user is not being deleted and zip code is not returned to the list of available zip codes")]
         public void DeleteUser_OnlyRequiredFieldsFilledTest()
         {
             UserDto userToDelete = new UserDto
             {
-                Name = "Bob Dilan",
-                Sex = Sex.Male.StringValue()
-                //Name = "Janna Dark",
-                //Sex = Sex.Female.StringValue()
+                //Name = "Bob Dilan",
+                //Sex = Sex.Male.StringValue()
+                Name = "Janna Dark",
+                Sex = Sex.Female.StringValue()
             };
 
             try
@@ -458,6 +474,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task70 - Scenario 1")]
+        [AllureIssue("If run the test for the second time it should fail as specified zip codes become unavailable")]
         public void UploadUsers_FileContainsUsersTest()
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
@@ -481,6 +498,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task70 - Scenario 2")]
+        [AllureIssue("Users with incorrect (unavailable) zip code can be uploaded from file and replace existing users")]
         public void UploadUsers_UserHasIncorrectZipCodeTest()
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
@@ -504,6 +522,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task70 - Scenario 3")]
+        [AllureIssue("Get incorrect response code in case if any of required fields are missing in the file")]
         public void UploadUsers_UserHasMissedRequiredFieldTest()
         {
             var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Settings\\Users\\users.json");
@@ -529,10 +548,11 @@ namespace APITesting.Tests
         {
             var users = UserService.GetUsers(sex, olderThan, youngerThan);
 
-            Console.WriteLine("Created users:");
+            logger.Info("Created users:");
+            
             foreach (var user in users)
             {
-                Console.WriteLine($"{user.Age}, {user.Name}, {user.Sex}, {user.ZipCode}");
+                logger.Info($"{user.Age}, {user.Name}, {user.Sex}, {user.ZipCode}");
             }
 
             return users;
