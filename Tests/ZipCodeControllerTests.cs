@@ -1,14 +1,20 @@
-﻿using APITesting.RestInfrastructure.Services;
+﻿using Allure.NUnit.Attributes;
+using Allure.NUnit;
+using APITesting.RestInfrastructure.Services;
 using System.Net;
 
 namespace APITesting.Tests
 {
+    [AllureNUnit]
+    [AllureDisplayIgnored]
+    [AllureSubSuite("ZipCode Controller Tests")]
     public class ZipCodeControllerTests
     {
         public ZipCodeService ZipCodeService = new ZipCodeService();
 
         [Test]
         [Description("Task20 - Scenario 1")]
+        [AllureIssue("Get incorrect response code")]
         public void GetZipCodesTest()
         {
             //BUG: Status code not as expected: Actual 201 (Created), Expected 200 (OK)
@@ -35,6 +41,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task20 - Scenario 3")]
+        [AllureIssue("Get duplications in available zip codes")]
         public void PostZipCodesWithDuplicatesInAvailableListTest()
         {
             List<string> zipCodesToPost = new List<string> { "code3", "code2" };
@@ -52,6 +59,7 @@ namespace APITesting.Tests
 
         [Test]
         [Description("Task20 - Scenario 4")]
+        [AllureIssue("Get duplications in already used zip codes")]
         public void PostZipCodesWithDuplicatesInAlreadyUsedListTest()
         {
             List<string> zipCodesToPost = new List<string> { "12345", "23456" };
