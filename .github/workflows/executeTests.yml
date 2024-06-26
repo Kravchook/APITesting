@@ -1,0 +1,59 @@
+name: Execute tests from automation framework
+on: [workflow_dispatch]  
+jobs:
+  Deploy_API_image_to_Github-hosted_runner:
+    runs-on: ubuntu-latest  
+    steps:
+    - name: Docker pull  
+      run: docker pull coherentsolutions/rest-training:2.0 
+    - name: Docker run
+      run: docker run -d -p 49000:8082 coherentsolutions/rest-training:2.0   
+
+    # Install .NET SDK
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    # Check out your code from git repository 
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    #Restore NuGet packages 
+    - name: Restore NuGet packages 
+      uses: IT-Service/restore-nuget-packages@v1      
+      
+    #Build your framework 
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v2
+
+    # Execute tests against deployed application TODO!!!!
+    #- name: Execute UI tests
+    #  run: dotnet test
+
+    # Publish Allure results via:https://allurereport.org/docs/integrations-github/   
+    #- name: Load test report history
+    #  uses: actions/checkout@v3
+    #  if: always()
+    #  continue-on-error: true
+    #  with:
+    #    ref: master
+    #    path: test_results
+
+    #- name: Build test report
+    #  uses: simple-elf/allure-report-action@v1.7
+    #  if: always()
+    #  with:
+    #    gh_pages: test_results
+    #    allure_history: allure-history
+    #    allure_results: build/allure-results
+
+    #- name: Publish test report
+    #  uses: peaceiris/actions-gh-pages@v3
+    #  if: always()
+    #  with:
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
+    #    publish_branch: master
+    #    publish_dir: allure-history
+
