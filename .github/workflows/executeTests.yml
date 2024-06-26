@@ -22,7 +22,7 @@ jobs:
     #Restore NuGet packages 
     - name: Restore NuGet packages 
       uses: nuget/setup-nuget@v2        
-    - run: nuget restore **\*.sln    
+    - run: nuget restore APITesting.sln    
       
     #Build your framework 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
