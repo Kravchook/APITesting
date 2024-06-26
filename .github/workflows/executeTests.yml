@@ -21,7 +21,8 @@ jobs:
 
     #Restore NuGet packages 
     - name: Restore NuGet packages 
-      uses: IT-Service/restore-nuget-packages@v1.0.2    
+      uses: nuget/setup-nuget@v2        
+    - run: nuget restore **\*.sln    
       
     #Build your framework 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
