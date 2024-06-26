@@ -28,32 +28,32 @@ jobs:
     - name: Setup MSBuild.exe
       uses: microsoft/setup-msbuild@v2
 
-    # Execute tests against deployed application TODO!!!!
-    #- name: Execute UI tests
-    #  run: dotnet test
+    # Execute tests against deployed application
+    - name: Execute UI tests
+      run: dotnet test
 
     # Publish Allure results via:https://allurereport.org/docs/integrations-github/   
-    #- name: Load test report history
-    #  uses: actions/checkout@v3
-    #  if: always()
-    #  continue-on-error: true
-    #  with:
-    #    ref: master
-    #    path: test_results
+    - name: Load test report history
+      uses: actions/checkout@v3
+      if: always()
+      continue-on-error: true
+      with:
+        ref: master
+        path: test_results
 
-    #- name: Build test report
-    #  uses: simple-elf/allure-report-action@v1.7
-    #  if: always()
-    #  with:
-    #    gh_pages: test_results
-    #    allure_history: allure-history
-    #    allure_results: build/allure-results
+    - name: Build test report
+      uses: simple-elf/allure-report-action@v1.7
+      if: always()
+      with:
+        gh_pages: test_results
+        allure_history: allure-history
+        allure_results: build/allure-results
 
-    #- name: Publish test report
-    #  uses: peaceiris/actions-gh-pages@v3
-    #  if: always()
-    #  with:
-    #    github_token: ${{ secrets.GITHUB_TOKEN }}
-    #    publish_branch: master
-    #    publish_dir: allure-history
+    - name: Publish test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: master
+        publish_dir: allure-history
 
