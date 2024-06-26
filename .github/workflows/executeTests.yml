@@ -38,7 +38,7 @@ jobs:
       if: always()
       continue-on-error: true
       with:
-        ref: master
+        ref: test_results
         path: test_results
 
     - name: Build test report
@@ -54,6 +54,6 @@ jobs:
       if: always()
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: master
+        publish_branch: test_results
         publish_dir: allure-history
 
