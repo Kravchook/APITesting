@@ -22,23 +22,15 @@ jobs:
     #Restore NuGet packages 
     #- name: Restore NuGet packages 
      # uses: nuget/setup-nuget@v2        
-    #- run: nuget restore APITesting.sln    
-
-    - name: Install dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --configuration Release --no-restore
-    - name: Test
-      run: dotnet test --no-restore --verbosity normal
+    #- run: nuget restore APITesting.sln      
       
-    #Build your framework 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    #- name: Setup MSBuild.exe
-    #  uses: microsoft/setup-msbuild@v2
-
+    # Restore NuGet packages and Build your framework    
+    - name: Build
+      run: dotnet build
+      
     # Execute tests against deployed application
-    #- name: Execute UI tests
-    #  run: dotnet test
+    - name: Execute tests
+      run: dotnet test --no-restore --verbosity normal
 
     # Publish Allure results via:https://allurereport.org/docs/integrations-github/   
     - name: Load test report history
