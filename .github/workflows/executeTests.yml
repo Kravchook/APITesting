@@ -17,14 +17,9 @@ jobs:
 
     # Check out your code from git repository 
     - name: Checkout code
-      uses: actions/checkout@v4
-
-    #Restore NuGet packages 
-    #- name: Restore NuGet packages 
-     # uses: nuget/setup-nuget@v2        
-    #- run: nuget restore APITesting.sln      
+      uses: actions/checkout@v4    
       
-    # Restore NuGet packages and Build your framework    
+    # Build your framework (including restore of dependencies: NuGet packages etc. )   
     - name: Build
       run: dotnet build
       
