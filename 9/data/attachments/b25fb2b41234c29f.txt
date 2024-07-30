@@ -1,0 +1,2 @@
+[2024-07-30 09:54:10.3221] INFO - Request for Get Zip Codes --> Resource: 'http://localhost:49000/zip-codes' Method: Get
+[2024-07-30 09:54:10.3221] INFO - Response content:["23456","ABCDE","12345"]

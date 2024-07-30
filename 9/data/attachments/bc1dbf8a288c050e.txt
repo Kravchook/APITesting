@@ -1,0 +1,3 @@
+[2024-07-30 09:54:10.1070] INFO - Request for Create User --> Resource: 'http://localhost:49000/users' Method: Post
+[2024-07-30 09:54:10.1070] INFO - Age: 0, Name: Janna Dark, Sex: FEMALE, Zip code: 
+[2024-07-30 09:54:10.1116] INFO - Response content:{"ts":1722333250109,"message":"Users must be unique for complex key name+sex"}

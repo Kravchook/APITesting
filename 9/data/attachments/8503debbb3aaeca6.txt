@@ -1,0 +1,4 @@
+[2024-07-30 09:54:10.1698] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.1698] INFO - Filter by parameter: Name 'sex' Value: FEMALE
+[2024-07-30 09:54:10.1830] INFO - Response content:[]
+[2024-07-30 09:54:10.1830] INFO - Created users:

@@ -1,0 +1,7 @@
+[2024-07-30 09:54:10.2759] INFO - Request for Update User --> Resource: 'http://localhost:49000/users' Method: Put
+[2024-07-30 09:54:10.2759] INFO - New User: Age '35', Name '', Sex '', Zip code 'code2'
+[2024-07-30 09:54:10.2759] INFO - User to change: Age '20', Name 'Bob Dilan', Sex 'MALE', Zip code 'code2'
+[2024-07-30 09:54:10.2810] INFO - Response content:{"ts":1722333250278,"message":"User to change is not found or is null or new values are null"}
+[2024-07-30 09:54:10.2810] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.2891] INFO - Response content:[]
+[2024-07-30 09:54:10.2891] INFO - Created users:

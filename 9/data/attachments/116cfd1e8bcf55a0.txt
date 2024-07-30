@@ -1,0 +1,8 @@
+[2024-07-30 09:54:10.0947] INFO - Request for Create User --> Resource: 'http://localhost:49000/users' Method: Post
+[2024-07-30 09:54:10.0947] INFO - Age: 0, Name: Janna Dark, Sex: FEMALE, Zip code: 
+[2024-07-30 09:54:10.1000] INFO - Response content:
+[2024-07-30 09:54:10.1000] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.1038] INFO - Response content:[{"name":"Bob Dilan","age":20,"sex":"MALE","zipCode":"12345"},{"name":"Janna Dark","age":0,"sex":"FEMALE","zipCode":null}]
+[2024-07-30 09:54:10.1038] INFO - Created users:
+[2024-07-30 09:54:10.1038] INFO - 20, Bob Dilan, MALE, 12345
+[2024-07-30 09:54:10.1038] INFO - 0, Janna Dark, FEMALE, 

@@ -1,0 +1,49 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","3","","","User Controller Tests","UserControllerTests","ShowUsersTest","ShowUsersTest","Task40 - Scenario 1
+"
+"passed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","6","","","User Controller Tests","UserControllerTests","ShowUsersOlderThanTest","ShowUsersOlderThanTest","Task40 - Scenario 2
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","11","","","User Controller Tests","UserControllerTests","UpdateUser_IncorrectZipCodeTest_MethodPut","UpdateUser_IncorrectZipCodeTest_MethodPut","Task50 - Scenario 2
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","11","","","User Controller Tests","UserControllerTests","UpdateUser_AllFieldsFilledTest_MethodPut","UpdateUser_AllFieldsFilledTest_MethodPut","Task50 - Scenario 1
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","18","","","User Controller Tests","UserControllerTests","UpdateUser_IncorrectZipCodeTest_MethodPatch","UpdateUser_IncorrectZipCodeTest_MethodPatch","Task50 - Scenario 2
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","14","","","User Controller Tests","UserControllerTests","DeleteUser_AllFieldsFilledTest","DeleteUser_AllFieldsFilledTest","Task60 - Scenario 1
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","6","","","User Controller Tests","UserControllerTests","CreateUser_RequiredFieldsFilledTest","CreateUser_RequiredFieldsFilledTest","Task30 - Scenario 2
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","14","","","User Controller Tests","UserControllerTests","UpdateUser_RequiredFieldsAreMissingTest_MethodPut","UpdateUser_RequiredFieldsAreMissingTest_MethodPut","Task50 - Scenario 3
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","4","","","ZipCode Controller Tests","ZipCodeControllerTests","GetZipCodesTest","GetZipCodesTest","Task20 - Scenario 1
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","31","","","User Controller Tests","UserControllerTests","DeleteUser_AnyOfRequiredFieldsIsMissingTest","DeleteUser_AnyOfRequiredFieldsIsMissingTest","Task60 - Scenario 3
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","12","","","User Controller Tests","UserControllerTests","CreateUser_CreateDuplicateForUserTest","CreateUser_CreateDuplicateForUserTest","Task30 - Scenario 4
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","13","","","User Controller Tests","UserControllerTests","UpdateUser_RequiredFieldsAreMissingTest_MethodPatch","UpdateUser_RequiredFieldsAreMissingTest_MethodPatch","Task50 - Scenario 3
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","54","","","User Controller Tests","UserControllerTests","CreateUser_AllFieldsFilledTest","CreateUser_AllFieldsFilledTest","Task30 - Scenario 1
+"
+"passed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","9","","","ZipCode Controller Tests","ZipCodeControllerTests","PostZipCodesTest","PostZipCodesTest","Task20 - Scenario 2
+"
+"passed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","4","","","User Controller Tests","UserControllerTests","ShowUsersYoungerThanTest","ShowUsersYoungerThanTest","Task40 - Scenario 3
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","10","","","User Controller Tests","UserControllerTests","DeleteUser_OnlyRequiredFieldsFilledTest","DeleteUser_OnlyRequiredFieldsFilledTest","Task60 - Scenario 2
+"
+"passed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","7","","","ZipCode Controller Tests","ZipCodeControllerTests","PostZipCodesWithDuplicatesInAlreadyUsedListTest","PostZipCodesWithDuplicatesInAlreadyUsedListTest","Task20 - Scenario 4
+"
+"passed","Tue Jul 30 09:54:09 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","483","","","User Controller Tests","UserControllerTests","CreateUser_AllFieldsFilled_IncorrectZipCodeTest","CreateUser_AllFieldsFilled_IncorrectZipCodeTest","Task30 - Scenario 3
+"
+"passed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","12","","","User Controller Tests","UserControllerTests","ShowUsersOfSpecificGenderTest","ShowUsersOfSpecificGenderTest","Task40 - Scenario 4
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","18","","","User Controller Tests","UserControllerTests","UpdateUser_AllFieldsFilledTest_MethodPatch","UpdateUser_AllFieldsFilledTest_MethodPatch","Task50 - Scenario 1
+"
+"broken","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","5","","","User Controller Tests","UserControllerTests","UploadUsers_UserHasMissedRequiredFieldTest","UploadUsers_UserHasMissedRequiredFieldTest","Task70 - Scenario 3
+"
+"failed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","11","","","User Controller Tests","UserControllerTests","UploadUsers_FileContainsUsersTest","UploadUsers_FileContainsUsersTest","Task70 - Scenario 1
+"
+"passed","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","4","","","ZipCode Controller Tests","ZipCodeControllerTests","PostZipCodesWithDuplicatesInAvailableListTest","PostZipCodesWithDuplicatesInAvailableListTest","Task20 - Scenario 3
+"
+"broken","Tue Jul 30 09:54:10 GMT 2024","Tue Jul 30 09:54:10 GMT 2024","8","","","User Controller Tests","UserControllerTests","UploadUsers_UserHasIncorrectZipCodeTest","UploadUsers_UserHasIncorrectZipCodeTest","Task70 - Scenario 2
+"

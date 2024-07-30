@@ -1,0 +1,6 @@
+[2024-07-30 09:54:09.5313] INFO - Request for Create User --> Resource: 'http://localhost:49000/users' Method: Post
+[2024-07-30 09:54:09.5356] INFO - Age: 52, Name: Tom Jones, Sex: MALE, Zip code: code10
+[2024-07-30 09:54:09.9802] INFO - Response content:{"ts":1722333249946,"message":"Specified zip code is not available"}
+[2024-07-30 09:54:09.9864] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.0053] INFO - Response content:[]
+[2024-07-30 09:54:10.0053] INFO - Created users:

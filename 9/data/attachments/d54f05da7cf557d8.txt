@@ -1,0 +1,9 @@
+[2024-07-30 09:54:10.1142] INFO - Request for Delete User --> Resource: 'http://localhost:49000/users' Method: Delete
+[2024-07-30 09:54:10.1142] INFO - Age: 20, Name: Bob Dilan, Sex: MALE, Zip code: 12345
+[2024-07-30 09:54:10.1197] INFO - Response content:
+[2024-07-30 09:54:10.1197] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.1231] INFO - Response content:[{"name":"Janna Dark","age":0,"sex":"FEMALE","zipCode":null}]
+[2024-07-30 09:54:10.1231] INFO - Created users:
+[2024-07-30 09:54:10.1231] INFO - 0, Janna Dark, FEMALE, 
+[2024-07-30 09:54:10.1231] INFO - Request for Get Zip Codes --> Resource: 'http://localhost:49000/zip-codes' Method: Get
+[2024-07-30 09:54:10.1265] INFO - Response content:["23456","ABCDE","12345"]

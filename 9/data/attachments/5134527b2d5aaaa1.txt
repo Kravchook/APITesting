@@ -1,0 +1,7 @@
+[2024-07-30 09:54:10.3264] INFO - Request for Post Zip Codes --> Resource: 'http://localhost:49000/zip-codes/expand' Method: Post
+[2024-07-30 09:54:10.3341] INFO - Response content:["23456","ABCDE","12345","code1","code2"]
+23456
+ABCDE
+12345
+code1
+code2

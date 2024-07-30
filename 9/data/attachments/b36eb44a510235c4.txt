@@ -1,0 +1,8 @@
+[2024-07-30 09:54:10.1612] INFO - Request for Delete User --> Resource: 'http://localhost:49000/users' Method: Delete
+[2024-07-30 09:54:10.1612] INFO - Age: 0, Name: Janna Dark, Sex: FEMALE, Zip code: 
+[2024-07-30 09:54:10.1612] INFO - Response content:
+[2024-07-30 09:54:10.1612] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.1668] INFO - Response content:[]
+[2024-07-30 09:54:10.1668] INFO - Created users:
+[2024-07-30 09:54:10.1668] INFO - Request for Get Zip Codes --> Resource: 'http://localhost:49000/zip-codes' Method: Get
+[2024-07-30 09:54:10.1698] INFO - Response content:["23456","ABCDE","12345"]

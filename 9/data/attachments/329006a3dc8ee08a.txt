@@ -1,0 +1,6 @@
+[2024-07-30 09:54:10.2891] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.2940] INFO - Response content:[]
+[2024-07-30 09:54:10.2940] INFO - Created users:
+[2024-07-30 09:54:10.2940] INFO - Request for Get Users --> Resource: 'http://localhost:49000/users' Method: Get
+[2024-07-30 09:54:10.2976] INFO - Response content:[]
+[2024-07-30 09:54:10.2976] INFO - Created users:
